@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="tgijIe7-ZDQPetZDf_zYKNkyzQDQMRPMhh9LUlXTeXk" />
+
+  <!-- Primary SEO -->
+  <title>UniValidator — Free Universal Code Validator &amp; Beautifier (26 Languages)</title>
+  <meta name="description" content="Free online code validator and beautifier supporting 26 languages — JSON, XML, HTML, YAML, Python, JavaScript, TypeScript, SQL, CSS, GraphQL, Bash, Dockerfile and more. Instant syntax checking and code formatting in your browser."/>
+  <meta name="keywords" content="code validator, json validator, xml validator, html validator, yaml validator, python linter, javascript validator, sql validator, css validator, code beautifier, code formatter, online linter, syntax checker, typescript validator, graphql validator, free developer tool"/>
+  <meta name="author" content="UniValidator"/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large"/>
+  <meta name="googlebot" content="index, follow"/>
+  <link rel="canonical" href="https://univalidate.netlify.app/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="UniValidator"/>
+  <meta property="og:title" content="UniValidator — Free Universal Code Validator &amp; Beautifier"/>
+  <meta property="og:description" content="Validate and beautify code in 26 languages instantly in your browser. JSON, XML, HTML, YAML, Python, JavaScript, SQL, CSS, GraphQL, Dockerfile and more. No signup required."/>
+  <meta property="og:url" content="https://univalidate.netlify.app/"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="UniValidator — Free Universal Code Validator"/>
+  <meta name="twitter:description" content="Validate and beautify code in 26 languages instantly. JSON, YAML, Python, JS, SQL, CSS, GraphQL and more. Free, no signup."/>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UniValidator",
+    "description": "Free online code validator and beautifier supporting 26 programming and markup languages. Instant syntax checking, error detection, and code formatting in the browser.",
+    "url": "https://univalidate.netlify.app/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["JSON validation","XML and HTML validation","YAML and TOML syntax checking","Python PEP8 linting","JavaScript and TypeScript analysis","SQL query validation","CSS syntax checking","GraphQL schema validation","Bash script linting","Dockerfile best-practice checks","Regex validation","CSV structure validation"],
+    "keywords": "code validator, json validator, yaml validator, online linter, code beautifier",
+    "inLanguage": "en"
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZTVmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjYxZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiMxMTEzMTgiLz4KICA8cmVjdCB4PSIxIiB5PSIxIiB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHJ4PSI1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjQiLz4KICA8dGV4dCB4PSIxNiIgeT0iMjIuNSIgZm9udC1mYW1pbHk9IidDb3VyaWVyIE5ldycsbW9ub3NwYWNlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2cpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iLTEiPnt9PC90ZXh0Pgo8L3N2Zz4=">
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZTVmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjYxZmYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjYiIGZpbGw9IiMxMTEzMTgiLz4KICA8cmVjdCB4PSIxIiB5PSIxIiB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHJ4PSI1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnKSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjQiLz4KICA8dGV4dCB4PSIxNiIgeT0iMjIuNSIgZm9udC1mYW1pbHk9IidDb3VyaWVyIE5ldycsbW9ub3NwYWNlIiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2cpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iLTEiPnt9PC90ZXh0Pgo8L3N2Zz4=">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0c10;
+      --surface:   #111318;
+      --surface2:  #181c24;
+      --border:    #252a35;
+      --accent:    #00e5ff;
+      --accent2:   #7b61ff;
+      --green:     #39ff7e;
+      --red:       #ff4f6a;
+      --yellow:    #ffcc00;
+      --text:      #c9d1e0;
+      --muted:     #4a5468;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-ui:   'Syne', sans-serif;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 36px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,12,16,0.85);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #000;
+      font-family: var(--font-ui);
+      box-shadow: 0 0 20px rgba(0,229,255,0.3);
+    }
+
+    .logo-text {
+      font-family: var(--font-ui);
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span { color: var(--accent); }
+
+    .header-meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── Main Layout ── */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 260px 1fr 320px;
+      grid-template-rows: 1fr;
+      gap: 0;
+      height: calc(100vh - 65px);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .sidebar-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      padding: 0 20px 10px;
+    }
+
+    .lang-group { margin-bottom: 24px; }
+
+    .lang-group-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      padding: 6px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+      border-left: 2px solid transparent;
+    }
+
+    .lang-btn:hover { background: var(--surface2); color: #fff; }
+
+    .lang-btn.active {
+      background: rgba(0,229,255,0.07);
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    .lang-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Editor ── */
+    .editor-pane {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+    }
+
+    .editor-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .editor-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .tab-dot.red { background: #ff5f57; }
+    .tab-dot.yellow { background: #febc2e; }
+    .tab-dot.green { background: #28c840; }
+
+    .tab-name {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 10px;
+    }
+
+    .tab-name span { color: var(--accent); }
+
+    .editor-actions { display: flex; gap: 10px; }
+
+    .btn {
+      padding: 7px 18px;
+      border: none;
+      border-radius: 5px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .btn-validate {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .btn-validate:hover { opacity: 0.85; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,229,255,0.3); }
+
+    .btn-clear {
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-clear:hover { color: var(--text); border-color: var(--muted); }
+
+    .btn-sample {
+      background: var(--surface2);
+      color: var(--accent2);
+      border: 1px solid var(--border);
+    }
+    .btn-sample:hover { border-color: var(--accent2); }
+
+    .editor-body { flex: 1; display: flex; position: relative; overflow: hidden; }
+
+    .line-numbers {
+      padding: 16px 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      text-align: right;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      user-select: none;
+      min-width: 48px;
+      overflow: hidden;
+    }
+
+    .line-numbers span { display: block; padding: 0 10px; }
+
+    #code-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      padding: 16px 20px;
+      resize: none;
+      tab-size: 2;
+      white-space: pre;
+      overflow-wrap: normal;
+      overflow-x: auto;
+    }
+
+    #code-input::placeholder { color: var(--muted); }
+    #code-input::selection { background: rgba(0,229,255,0.2); }
+
+    .editor-footer {
+      padding: 6px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cursor-pos { color: var(--accent2); }
+
+    /* ── Results Pane ── */
+    .results-pane {
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .results-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .results-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 400;
+    }
+
+    .badge-waiting { background: rgba(74,84,104,0.3); color: var(--muted); }
+    .badge-ok      { background: rgba(57,255,126,0.15); color: var(--green); }
+    .badge-error   { background: rgba(255,79,106,0.15); color: var(--red); }
+    .badge-warning { background: rgba(255,204,0,0.15); color: var(--yellow); }
+
+    .results-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .results-body::-webkit-scrollbar { width: 4px; }
+    .results-body::-webkit-scrollbar-track { background: transparent; }
+    .results-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .result-idle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .result-idle .idle-icon { font-size: 42px; opacity: 0.3; }
+    .result-idle p { font-size: 12px; line-height: 1.7; }
+
+    .result-item {
+      margin-bottom: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-item-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+
+    .result-item.ok    .result-item-header { background: rgba(57,255,126,0.08); color: var(--green); }
+    .result-item.error .result-item-header { background: rgba(255,79,106,0.08); color: var(--red); }
+    .result-item.warn  .result-item-header { background: rgba(255,204,0,0.08);  color: var(--yellow); }
+    .result-item.info  .result-item-header { background: rgba(0,229,255,0.08);  color: var(--accent); }
+
+    .result-item-body {
+      padding: 10px 12px;
+      font-size: 11.5px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--surface2);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .line-ref {
+      display: inline-block;
+      background: rgba(123,97,255,0.2);
+      color: var(--accent2);
+      padding: 0 5px;
+      border-radius: 3px;
+      font-size: 10px;
+      margin-right: 4px;
+    }
+
+    /* Summary bar */
+    .summary-bar {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 8px;
+    }
+
+    .summary-stat {
+      background: var(--surface2);
+      border-radius: 6px;
+      padding: 8px 10px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .summary-stat .num {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .summary-stat .lbl {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .num.errors { color: var(--red); }
+    .num.warnings { color: var(--yellow); }
+    .num.ok { color: var(--green); }
+
+    /* Beautify panel */
+    .beautify-section {
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .beautify-header {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .btn-beautify {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(123,97,255,0.2), rgba(0,229,255,0.1));
+      color: var(--accent2);
+      border: 1px solid rgba(123,97,255,0.4);
+      padding: 9px;
+      font-size: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .btn-beautify:hover { background: rgba(123,97,255,0.25); border-color: var(--accent2); }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Scrollbars */
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; height: auto; }
+      .sidebar { display: flex; flex-wrap: wrap; gap: 4px; padding: 12px; border-right: none; border-bottom: 1px solid var(--border); }
+      .lang-group { margin: 0; }
+      .lang-group-title { display: none; }
+      .lang-btn { padding: 5px 10px; border-radius: 4px; border-left: none !important; font-size: 11px; }
+      .lang-btn.active { border-bottom: 2px solid var(--accent); }
+      .results-pane { border-left: none; border-top: 1px solid var(--border); }
+      .editor-pane { min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">{ }</div>
+      <div class="logo-text">Uni<span>Validator</span></div>
+    </div>
+    <div class="header-meta">
+      Universal Code Validator &amp; Beautifier<br/>
+      26 Languages Supported
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-label">Languages</div>
+
+      <div class="lang-group">
+        <div class="lang-group-title">Data &amp; Markup</div>
+        <button class="lang-btn active" data-lang="json" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#ffcc00"></span> JSON
+        </button>
+        <button class="lang-btn" data-lang="xml" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#ff7043"></span> XML
+        </button>
+        <button class="lang-btn" data-lang="html" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#e44d26"></span> HTML
+        </button>
+        <button class="lang-btn" data-lang="yaml" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#cb171e"></span> YAML
+        </button>
+        <button class="lang-btn" data-lang="toml" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#9b59b6"></span> TOML
+        </button>
+        <button class="lang-btn" data-lang="csv" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#27ae60"></span> CSV
+        </button>
+        <button class="lang-btn" data-lang="markdown" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#083fa1"></span> Markdown
+        </button>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-group-title">Programming</div>
+        <button class="lang-btn" data-lang="javascript" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#f7df1e"></span> JavaScript
+        </button>
+        <button class="lang-btn" data-lang="typescript" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#3178c6"></span> TypeScript
+        </button>
+        <button class="lang-btn" data-lang="python" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#3572a5"></span> Python
+        </button>
+        <button class="lang-btn" data-lang="java" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#b07219"></span> Java
+        </button>
+        <button class="lang-btn" data-lang="css" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#563d7c"></span> CSS
+        </button>
+        <button class="lang-btn" data-lang="sql" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#e38c00"></span> SQL
+        </button>
+        <button class="lang-btn" data-lang="graphql" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#e10098"></span> GraphQL
+        </button>
+        <button class="lang-btn" data-lang="bash" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#89e051"></span> Bash / Shell
+        </button>
+        <button class="lang-btn" data-lang="rust" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#dea584"></span> Rust
+        </button>
+        <button class="lang-btn" data-lang="go" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#00add8"></span> Go
+        </button>
+        <button class="lang-btn" data-lang="php" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#4f5d95"></span> PHP
+        </button>
+        <button class="lang-btn" data-lang="ruby" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#701516"></span> Ruby
+        </button>
+        <button class="lang-btn" data-lang="csharp" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#178600"></span> C#
+        </button>
+        <button class="lang-btn" data-lang="cpp" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#f34b7d"></span> C / C++
+        </button>
+        <button class="lang-btn" data-lang="swift" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#f05138"></span> Swift
+        </button>
+        <button class="lang-btn" data-lang="kotlin" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#a97bff"></span> Kotlin
+        </button>
+        <button class="lang-btn" data-lang="regex" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#00e5ff"></span> Regex
+        </button>
+      </div>
+
+      <div class="lang-group">
+        <div class="lang-group-title">Config &amp; Infra</div>
+        <button class="lang-btn" data-lang="dockerfile" onclick="selectLang(this)">
+          <span class="lang-dot" style="background:#2496ed"></span> Dockerfile
+        </button>
+      </div>
+    </aside>
+
+    <!-- Editor -->
+    <div class="editor-pane">
+      <div class="editor-header">
+        <div class="editor-tabs">
+          <span class="tab-dot red"></span>
+          <span class="tab-dot yellow"></span>
+          <span class="tab-dot green"></span>
+          <span class="tab-name">validator / <span id="tab-lang">json</span></span>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-sample" onclick="loadSample()">⚡ Sample</button>
+          <button class="btn btn-clear" onclick="clearEditor()">✕ Clear</button>
+          <button class="btn btn-validate" onclick="runValidation()">▶ Validate</button>
+        </div>
+      </div>
+
+      <div class="editor-body">
+        <div class="line-numbers" id="line-numbers"><span>1</span></div>
+        <textarea
+          id="code-input"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          placeholder="// Paste or type your code here..."
+          oninput="updateLineNumbers(); updateCursor(event)"
+          onkeydown="handleTab(event)"
+          onclick="updateCursor(event)"
+          onkeyup="updateCursor(event)"
+        ></textarea>
+      </div>
+
+      <div class="editor-footer">
+        <span id="char-count">0 chars · 1 line</span>
+        <span class="cursor-pos" id="cursor-pos">Ln 1, Col 1</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-pane">
+      <div class="results-header">
+        Diagnostics
+        <span class="results-badge badge-waiting" id="status-badge">READY</span>
+      </div>
+
+      <div class="results-body" id="results-body">
+        <div class="result-idle">
+          <div class="idle-icon">◈</div>
+          <p>Paste your code and hit<br/><strong style="color:var(--accent)">▶ Validate</strong> to analyze</p>
+        </div>
+      </div>
+
+      <div class="summary-bar" id="summary-bar" style="display:none">
+        <div class="summary-stat">
+          <div class="num errors" id="sum-errors">0</div>
+          <div class="lbl">Errors</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num warnings" id="sum-warnings">0</div>
+          <div class="lbl">Warnings</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num ok" id="sum-checks">0</div>
+          <div class="lbl">Passed</div>
+        </div>
+      </div>
+
+      <div class="beautify-section">
+        <div class="beautify-header">Auto-Beautify</div>
+        <button class="btn-beautify" onclick="beautifyCode()">✦ Format &amp; Beautify Code</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+let currentLang = 'json';
+
+// ── Lang Selection ─────────────────────────────────────────────────────────
+function selectLang(el) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  currentLang = el.dataset.lang;
+  document.getElementById('tab-lang').textContent = currentLang;
+  resetResults();
+}
+
+function resetResults() {
+  const rb = document.getElementById('results-body');
+  rb.innerHTML = `<div class="result-idle"><div class="idle-icon">◈</div><p>Paste your code and hit<br/><strong style="color:var(--accent)">▶ Validate</strong> to analyze</p></div>`;
+  document.getElementById('status-badge').className = 'results-badge badge-waiting';
+  document.getElementById('status-badge').textContent = 'READY';
+  document.getElementById('summary-bar').style.display = 'none';
+}
+
+// ── Editor Helpers ─────────────────────────────────────────────────────────
+function updateLineNumbers() {
+  const ta = document.getElementById('code-input');
+  const lines = ta.value.split('\n').length;
+  const ln = document.getElementById('line-numbers');
+  ln.innerHTML = Array.from({length: lines}, (_,i) => `<span>${i+1}</span>`).join('');
+  const chars = ta.value.length;
+  document.getElementById('char-count').textContent = `${chars} chars · ${lines} line${lines>1?'s':''}`;
+  syncScroll();
+}
+
+function syncScroll() {
+  const ta = document.getElementById('code-input');
+  const ln = document.getElementById('line-numbers');
+  ln.scrollTop = ta.scrollTop;
+}
+
+function updateCursor(e) {
+  const ta = document.getElementById('code-input');
+  const val = ta.value;
+  const pos = ta.selectionStart;
+  const lines = val.substring(0, pos).split('\n');
+  const ln = lines.length;
+  const col = lines[lines.length - 1].length + 1;
+  document.getElementById('cursor-pos').textContent = `Ln ${ln}, Col ${col}`;
+}
+
+function handleTab(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const ta = document.getElementById('code-input');
+    const s = ta.selectionStart, end = ta.selectionEnd;
+    ta.value = ta.value.substring(0,s) + '  ' + ta.value.substring(end);
+    ta.selectionStart = ta.selectionEnd = s + 2;
+    updateLineNumbers();
+  }
+}
+
+document.getElementById('code-input').addEventListener('scroll', syncScroll);
+
+function clearEditor() {
+  document.getElementById('code-input').value = '';
+  updateLineNumbers();
+  resetResults();
+}
+
+// ── Samples ────────────────────────────────────────────────────────────────
+const samples = {
+  json: `{
+  "name": "UniValidator",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.0",
+    "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "dev@example.com",
+  "missing_closing_brace": true
+}`,
+  xml: `<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <book id="bk101">
+    <author>Gambardella, Matthew</author>
+    <title>XML Developer's Guide</title>
+    <price>44.95</price>
+  </book>
+  <book id="bk102">
+    <author>Ralls, Kim</author>
+    <title>Midnight Rain</title>
+    <!-- price tag missing intentionally -->
+  </book
+</catalog>`,
+  html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Page</title>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <p>This is a paragraph with an <a href="#">unclosed link
+  <img src="photo.jpg" alt="">
+  <div class="wrapper">
+    <span>Unclosed span
+  </div>
+</body>
+</html>`,
+  yaml: `name: my-app
+version: 1.0.0
+environment:
+  - NODE_ENV=production
+  - PORT=3000
+services:
+  web:
+    image: node:18
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+   command: npm start   # bad indentation here
+database:
+  host: localhost
+  port: 5432`,
+  toml: `[package]
+name = "my-project"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+debug = false`,
+  csv: `id,name,age,email,city
+1,Alice Johnson,28,alice@example.com,New York
+2,Bob Smith,34,bob@example.com,Los Angeles
+3,Carol White,,carol@example.com,Chicago
+4,Dave Brown,45,not-an-email,Houston
+5,"Eve, Jones",29,eve@example.com,Phoenix
+6,Frank Black,abc,frank@example.com,Philadelphia`,
+  javascript: `const fetchUser = async (id) => {
+  try {
+    const response = await fetch(\`/api/users/\${id}\`)
+    const data = await response.json()
+    
+    if (!response.ok) throw new Error('Request failed')
+    
+    return {
+      id: data.id,
+      name: data.name,
+      email: data.email
+    }
+  } catch(err {
+    console.error('Error:', err)
+    return null
+  }
+}
+
+// Unused variable
+const unusedVar = 42
+
+fetchUser(1).then(user => console.log(user)`,
+  python: `import os
+import sys
+from typing import List, Optional
+
+def calculate_average(numbers: List[float]) -> Optional[float]:
+    """Calculate the average of a list of numbers."""
+    if not numbers:
+        return None
+    
+    total = sum(numbers)
+    count = len(numbers)
+    
+    return total / count
+
+class DataProcessor:
+    def __init__(self, data):
+        self.data = data
+        self.processed = False
+    
+    def process(self):
+      # bad indentation - 2 spaces instead of 4
+      result = []
+      for item in self.data:
+          result.append(item * 2)
+      self.processed=True  # missing spaces around =
+      return result
+
+if __name__ == "__main__":
+    processor = DataProcessor([1,2,3,4,5])
+    print(processor.process())`,
+  css: `.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  color #333;   /* missing colon */
+  margin-bottom: 16px
+}
+
+.button {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform translateY(-2px);  /* missing colon */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}`,
+  sql: `SELECT 
+  u.id,
+  u.name,
+  u.email,
+  COUNT(o.id) AS order_count,
+  SUM(o.total_amount) AS total_spent
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.created_at >= '2024-01-01'
+  AND u.status = 'active'
+GROUP BY u.id, u.name, u.email
+HAVING COUNT(o.id) > 5
+ORDER BY total_spent DESC
+LIMIT 10`,
+  graphql: `type User {
+  id: ID!
+  name: String!
+  email: String!
+  posts: [Post!]!
+  createdAt: DateTime!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  body: String
+  author: User!
+  tags [String!]!   # missing colon
+}
+
+type Query {
+  user(id: ID!): User
+  users(limit: Int = 10): [User!]!
+}
+
+type Mutation {
+  createUser(name: String!, email: String!): User!
+  deleteUser(id: ID!): Boolean
+}`,
+  bash: `#!/bin/bash
+set -e
+
+APP_NAME="myapp"
+LOG_DIR="/var/log/$APP_NAME"
+
+# Create log dir if not exists  
+mkdir -p $LOG_DIR
+
+deploy() {
+  local version=$1
+  
+  if [ -z "$version" ]; then
+    echo "Error: version required"
+    exit 1
+  fi
+  
+  echo "Deploying $APP_NAME v$version..."
+  
+  # Potential issue: unquoted variable
+  cp -r ./dist/* /opt/$APP_NAME/
+  
+  systemctl restart $APP_NAME
+  echo "Done!"
+}
+
+deploy $1`,
+  yaml: `name: my-app
+version: 1.0.0
+environment:
+  - NODE_ENV=production
+  - PORT=3000
+services:
+  web:
+    image: node:18
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+   command: npm start
+database:
+  host: localhost
+  port: 5432`,
+  regex: `/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/`,
+  dockerfile: `FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+
+USER node
+
+CMD ["node", "server.js"]`,
+  markdown: `# Project README
+
+## Installation
+
+Run the following command:
+
+\`\`\`bash
+npm install
+\`\`\`
+
+## Usage
+
+### Basic Example
+
+Here is how to use the library:
+
+- Item one
+- Item two
+ - Badly indented sub-item
+* Mixed list markers
+
+## API Reference
+
+| Method | Description |
+|--------|-------------|
+| init() | Initialize |
+| run()  | Start process |
+
+> Note: Always check the docs
+
+[Broken link](  )`,
+  rust: `use std::collections::HashMap;
+
+#[derive(Debug)]
+struct Config {
+    host: String,
+    port: u16,
+    debug: bool,
+}
+
+impl Config {
+    fn new(host: &str, port: u16) -> Self {
+        Config {
+            host: host.to_string(),
+            port,
+            debug: false,
+        }
+    }
+    
+    fn from_env() -> Result<Self, String> {
+        let host = std::env::var("HOST")
+            .unwrap_or_else(|_| "localhost".to_string());
+        
+        let port: u16 = std::env::var("PORT")
+            .unwrap_or_else(|_| "8080".to_string())
+            .parse()
+            .map_err(|e| format!("Invalid port: {}", e))?;
+        
+        Ok(Config::new(&host, port))
+    }
+}`,
+  go: `package main
+
+import (
+    "fmt"
+    "net/http"
+    "encoding/json"
+)
+
+type Response struct {
+    Status  string \`json:"status"\`
+    Message string \`json:"message"\`
+    Data    interface{} \`json:"data,omitempty"\`
+}
+
+func healthHandler(w http.ResponseWriter, r *http.Request) {
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(Response{
+        Status: "ok",
+        Message: "Server is running",
+    })
+}
+
+func main() {
+    http.HandleFunc("/health", healthHandler)
+    fmt.Println("Server starting on :8080")
+    http.ListenAndServe(":8080", nil)
+}`,
+  php: `<?php
+
+namespace App\\Controllers;
+
+use App\\Models\\User;
+use Illuminate\\Http\\Request;
+use Illuminate\\Http\\JsonResponse;
+
+class UserController extends Controller
+{
+    public function index(Request $request): JsonResponse
+    {
+        $users = User::query()
+            ->when($request->search, function($q, $search) {
+                $q->where('name', 'like', "%{$search}%");
+            })
+            ->paginate(15);
+        
+        return response()->json($users);
+    }
+    
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8'
+        ]);
+        
+        $user = User::create($validated);
+        
+        return response()->json($user, 201)
+    }  // missing semicolon above
+}`,
+  csharp: `using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace MyApp.Services
+{
+    public class UserService
+    {
+        private readonly IUserRepository _repo;
+        
+        public UserService(IUserRepository repo)
+        {
+            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
+        }
+        
+        public async Task<List<User>> GetActiveUsersAsync()
+        {
+            var users = await _repo.GetAllAsync();
+            return users.FindAll(u => u.IsActive);
+        }
+        
+        public async Task<User> CreateUserAsync(string name, string email)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name cannot be empty");
+            
+            var user = new User { Name = name, Email = email, IsActive = true }
+            return await _repo.SaveAsync(user);
+        }
+    }
+}`,
+  swift: `import Foundation
+import Combine
+
+struct User: Codable, Identifiable {
+    let id: UUID
+    var name: String
+    var email: String
+    var isActive: Bool
+}
+
+class UserViewModel: ObservableObject {
+    @Published var users: [User] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    func fetchUsers() {
+        isLoading = true
+        
+        guard let url = URL(string: "https://api.example.com/users") else {
+            errorMessage = "Invalid URL"
+            return
+        }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map(\\.data)
+            .decode(type: [User].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.isLoading = false
+                if case .failure(let error) = completion {
+                    self?.errorMessage = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] users in
+                self?.users = users
+            })
+            .store(in: &cancellables)
+    }
+}`,
+  kotlin: `data class User(
+    val id: Long,
+    val name: String,
+    val email: String,
+    val isActive: Boolean = true
+)
+
+class UserRepository(private val db: Database) {
+    
+    suspend fun findById(id: Long): User? {
+        return db.query("SELECT * FROM users WHERE id = ?", id)
+            .map { row ->
+                User(
+                    id = row.getLong("id"),
+                    name = row.getString("name"),
+                    email = row.getString("email"),
+                    isActive = row.getBoolean("is_active")
+                )
+            }.firstOrNull()
+    }
+    
+    suspend fun save(user: User): User {
+        val id = db.insert("users") {
+            set("name", user.name)
+            set("email", user.email)
+            set("is_active", user.isActive)
+        }
+        return user.copy(id = id)
+    }
+}`,
+  typescript: `interface ApiResponse<T> {
+  data: T;
+  status: number;
+  message: string;
+}
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: 'admin' | 'user' | 'guest';
+}
+
+async function fetchUser(id: number): Promise<ApiResponse<User>> {
+  const response = await fetch(\`/api/users/\${id}\`);
+  
+  if (!response.ok) {
+    throw new Error(\`HTTP error! status: \${response.status}\`);
+  }
+  
+  const data = await response.json();
+  return data as ApiResponse<User>
+}
+
+// Type error example
+const processUser = (user: User): string => {
+  return user.id + user.name; // number + string concatenation
+};`,
+  java: `package com.example.service;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+    
+    private final UserRepository userRepository;
+    
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
+    }
+    
+    public User createUser(String name, String email) {
+        User user = new User()
+        user.setName(name);
+        user.setEmail(email);
+        return userRepository.save(user);
+    }
+}`,
+  ruby: `# frozen_string_literal: true
+
+class UserService
+  attr_reader :repository
+  
+  def initialize(repository = UserRepository.new)
+    @repository = repository
+  end
+  
+  def find_active_users
+    repository.all.select(&:active?)
+  end
+  
+  def create_user(name:, email:)
+    raise ArgumentError, "Name required" if name.blank?
+    raise ArgumentError, "Invalid email" unless valid_email?(email)
+    
+    user = User.new(name: name, email: email)
+    repository.save(user)
+    user
+  end
+  
+  private
+  
+  def valid_email?(email)
+    email =~ /\\A[\\w+\\-.]+@[a-z\\d\\-.]+\\.[a-z]+\\z/i
+  end
+end`,
+  cpp: `#include <iostream>
+#include <vector>
+#include <string>
+#include <memory>
+
+class Node {
+public:
+    int value;
+    std::shared_ptr<Node> next;
+    
+    explicit Node(int val) : value(val), next(nullptr) {}
+};
+
+class LinkedList {
+private:
+    std::shared_ptr<Node> head;
+    size_t size_;
+    
+public:
+    LinkedList() : head(nullptr), size_(0) {}
+    
+    void push_front(int value) {
+        auto node = std::make_shared<Node>(value);
+        node->next = head;
+        head = node;
+        ++size_;
+    }
+    
+    void print() const {
+        auto current = head;
+        while (current) {
+            std::cout << current->value;
+            if (current->next) std::cout << " -> ";
+            current = current->next;
+        }
+        std::cout << std::endl;
+    }
+    
+    size_t size() const { return size_; }
+};`
+};
+
+function loadSample() {
+  const code = samples[currentLang] || `// No sample available for ${currentLang}\n// Paste your code here and click Validate`;
+  document.getElementById('code-input').value = code;
+  updateLineNumbers();
+  resetResults();
+}
+
+// ── Validators ─────────────────────────────────────────────────────────────
+const validators = {
+
+  json: (code) => {
+    const results = [];
+    const lines = code.split('\n');
+    let errors = 0, warnings = 0, passed = 0;
+
+    try {
+      JSON.parse(code);
+      results.push({ type:'ok', title:'✓ Valid JSON', body:'Structure is well-formed. All brackets, braces, and commas are balanced.' });
+      passed++;
+
+      // Additional checks
+      if (code.includes('//') || code.includes('/*')) {
+        results.push({ type:'warn', title:'⚠ Comments detected', body:'JSON does not support comments. Parsers will reject this.' }); warnings++;
+      }
+      if (/,\s*[\}\]]/.test(code)) {
+        results.push({ type:'warn', title:'⚠ Trailing comma', body:'Trailing commas are not valid in strict JSON.' }); warnings++;
+      }
+      if (/"\s*:\s*undefined/.test(code)) {
+        results.push({ type:'warn', title:'⚠ undefined value', body:'undefined is not a valid JSON value. Use null instead.' }); warnings++;
+      }
+      const depth = (code.match(/\{|\[/g)||[]).length;
+      if (depth > 10) {
+        results.push({ type:'warn', title:`⚠ Deep nesting (${depth} levels)`, body:'Consider flattening the structure for better readability.' }); warnings++;
+      }
+      passed++;
+    } catch(e) {
+      errors++;
+      const msg = e.message;
+      const lineMatch = msg.match(/line (\d+)/i);
+      const colMatch  = msg.match(/column (\d+)/i);
+      const ln  = lineMatch ? parseInt(lineMatch[1]) : '?';
+      const col = colMatch  ? parseInt(colMatch[1])  : '?';
+      results.push({
+        type:'error', title:'✗ JSON Parse Error',
+        body: `<span class="line-ref">Ln ${ln} Col ${col}</span>${escHtml(msg)}`
+      });
+
+      // Hints
+      if (/Unexpected token/.test(msg)) {
+        results.push({ type:'info', title:'💡 Hint', body:'Check for: missing commas between properties, unquoted keys, or single quotes (use double quotes in JSON).' });
+      }
+      if (/Unexpected end/.test(msg)) {
+        results.push({ type:'info', title:'💡 Hint', body:'The structure is incomplete. Check for unclosed braces { } or brackets [ ].' });
+      }
+    }
+
+    // Key naming check
+    const badKeys = [...code.matchAll(/"([^"]*\s[^"]*)":/g)].map(m => m[1]);
+    if (badKeys.length) {
+      results.push({ type:'warn', title:'⚠ Keys with spaces', body:`Found: ${badKeys.slice(0,3).map(k=>`"${k}"`).join(', ')}. Use camelCase or snake_case instead.` });
+      warnings++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  xml: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(code, 'application/xml');
+    const parseError = doc.querySelector('parsererror');
+
+    if (parseError) {
+      errors++;
+      const errText = parseError.textContent.trim();
+      results.push({ type:'error', title:'✗ XML Parse Error', body: escHtml(errText.substring(0,300)) });
+    } else {
+      results.push({ type:'ok', title:'✓ Well-formed XML', body:'All tags are properly nested and closed.' }); passed++;
+    }
+
+    // Check declaration
+    if (!code.trimStart().startsWith('<?xml')) {
+      results.push({ type:'warn', title:'⚠ Missing XML declaration', body:'Consider adding: <?xml version="1.0" encoding="UTF-8"?>' }); warnings++;
+    } else { passed++; }
+
+    // Unclosed tags heuristic
+    const opens = (code.match(/<[a-zA-Z]/g)||[]).length;
+    const closes = (code.match(/<\/[a-zA-Z]|\/>/g)||[]).length;
+    if (opens > closes + 1) {
+      results.push({ type:'warn', title:'⚠ Possible unclosed tags', body:`Detected ${opens} opening tags but only ${closes} closing/self-closing tags.` }); warnings++;
+    }
+
+    // Check for inline styles
+    if (/style\s*=/.test(code)) {
+      results.push({ type:'info', title:'ℹ Inline style attribute', body:'Style attributes are more appropriate in HTML, not XML data.' });
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  html: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(code, 'text/html');
+
+    if (!code.includes('<!DOCTYPE')) {
+      results.push({ type:'warn', title:'⚠ Missing DOCTYPE', body:'Add <!DOCTYPE html> as the first line for HTML5.' }); warnings++;
+    } else { passed++; }
+
+    if (!code.includes('<html')) {
+      results.push({ type:'error', title:'✗ Missing <html> tag', body:'Root <html> element is required.' }); errors++;
+    } else { passed++; }
+
+    if (!code.includes('<head')) {
+      results.push({ type:'warn', title:'⚠ Missing <head>', body:'A <head> section is strongly recommended.' }); warnings++;
+    } else { passed++; }
+
+    if (!/<meta\s[^>]*charset/i.test(code)) {
+      results.push({ type:'warn', title:'⚠ No charset meta tag', body:'Add <meta charset="UTF-8"> inside <head>.' }); warnings++;
+    } else { passed++; }
+
+    if (!/<title/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Missing <title>', body:'Every HTML page should have a <title> element.' }); warnings++;
+    } else { passed++; }
+
+    // Images without alt
+    const imgNoAlt = (code.match(/<img(?![^>]*alt\s*=)[^>]*>/gi)||[]).length;
+    if (imgNoAlt) {
+      results.push({ type:'warn', title:`⚠ ${imgNoAlt} image(s) missing alt`, body:'Images need alt attributes for accessibility.' }); warnings++;
+    } else if (/<img/i.test(code)) { passed++; }
+
+    // Check for common inline events
+    if (/on[a-z]+=["']/i.test(code)) {
+      results.push({ type:'info', title:'ℹ Inline event handlers', body:'Prefer addEventListener() in external JS instead of inline onclick, onload etc.' });
+    }
+
+    if (errors === 0 && warnings === 0) {
+      results.push({ type:'ok', title:'✓ HTML looks clean', body:'No major structural issues detected.' }); passed++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  yaml: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    // Indentation check (YAML requires consistent spaces)
+    const indents = lines
+      .filter(l => l.trim() && !l.trimStart().startsWith('#'))
+      .map(l => l.match(/^(\s*)/)[1].length)
+      .filter(n => n > 0);
+
+    const oddIndent = indents.filter(n => n % 2 !== 0);
+    if (oddIndent.length > 0) {
+      results.push({ type:'error', title:'✗ Inconsistent indentation', body:`Found ${oddIndent.length} line(s) with odd-number indentation. YAML requires consistent spaces (2 or 4).` }); errors++;
+    } else { results.push({ type:'ok', title:'✓ Indentation looks consistent', body:'All indentation uses even spacing.' }); passed++; }
+
+    // Tab check
+    if (lines.some(l => /^\t/.test(l))) {
+      results.push({ type:'error', title:'✗ Tabs detected', body:'YAML does not allow tab characters for indentation. Use spaces only.' }); errors++;
+    } else { passed++; }
+
+    // Duplicate keys check
+    const keys = lines.map(l => l.match(/^[\s]*([a-zA-Z_][a-zA-Z0-9_]*):/)?.[1]).filter(Boolean);
+    const dupes = keys.filter((k,i) => keys.indexOf(k) !== i);
+    if (dupes.length) {
+      results.push({ type:'warn', title:`⚠ Duplicate key(s): ${[...new Set(dupes)].join(', ')}`, body:'Duplicate keys are not allowed; last value wins in most parsers.' }); warnings++;
+    } else { passed++; }
+
+    // Boolean values
+    if (/:\s*(yes|no|on|off)\b/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Ambiguous boolean values', body:"Values like yes/no/on/off are treated as booleans in YAML 1.1. Use true/false for clarity." }); warnings++;
+    }
+
+    // Long lines
+    const longLines = lines.filter(l => l.length > 120);
+    if (longLines.length) {
+      results.push({ type:'info', title:`ℹ ${longLines.length} line(s) exceed 120 chars`, body:'Consider using YAML block scalars (| or >) for long string values.' });
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  css: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    // Missing colons
+    lines.forEach((line, i) => {
+      const propMatch = line.match(/^\s*([a-z-]+)\s+([^{:;]+);/);
+      if (propMatch && !line.includes(':') && !line.trim().startsWith('//') && !line.trim().startsWith('*')) {
+        results.push({ type:'error', title:`✗ Missing colon on line ${i+1}`, body:`<span class="line-ref">Ln ${i+1}</span>Property declaration missing ':' → ${escHtml(line.trim())}` }); errors++;
+      }
+    });
+
+    // Missing semicolons
+    const rules = code.match(/\{[^}]+\}/g) || [];
+    rules.forEach(rule => {
+      const props = rule.replace(/\{|\}/g,'').trim().split('\n');
+      props.forEach(prop => {
+        const t = prop.trim();
+        if (t && !t.startsWith('//') && !t.startsWith('*') && !t.endsWith('{') && !t.endsWith('}') && !t.endsWith(';') && t.includes(':') && t.length > 2) {
+          results.push({ type:'warn', title:'⚠ Missing semicolon', body:`<span class="line-ref">possible</span>${escHtml(t)}` }); warnings++;
+        }
+      });
+    });
+
+    if (!results.length) {
+      results.push({ type:'ok', title:'✓ CSS syntax looks valid', body:'No obvious syntax errors detected.' }); passed++;
+    }
+
+    // Vendor prefix check
+    if (!/-webkit-|-moz-|-ms-/.test(code) && /(transition|transform|animation|flex|grid)/.test(code)) {
+      results.push({ type:'info', title:'ℹ No vendor prefixes', body:'Modern browsers handle this fine, but older ones may need -webkit- prefixes for some properties.' });
+    } else { passed++; }
+
+    // !important
+    const importants = (code.match(/!important/g)||[]).length;
+    if (importants > 2) {
+      results.push({ type:'warn', title:`⚠ ${importants} !important declarations`, body:'Overusing !important breaks the CSS cascade. Refactor specificity instead.' }); warnings++;
+    } else { passed++; }
+
+    // Color format consistency
+    const hexColors = (code.match(/#[0-9a-fA-F]{3,6}/g)||[]).length;
+    const rgbColors = (code.match(/rgb\(/g)||[]).length;
+    if (hexColors > 0 && rgbColors > 0) {
+      results.push({ type:'info', title:'ℹ Mixed color formats', body:`Found ${hexColors} hex and ${rgbColors} rgb() colors. Consider standardizing.` });
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  sql: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+
+    // SELECT *
+    if (/SELECT\s+\*/i.test(code)) {
+      results.push({ type:'warn', title:'⚠ SELECT * usage', body:'Avoid SELECT * in production. Specify column names explicitly for performance and maintainability.' }); warnings++;
+    } else { passed++; }
+
+    // Missing WHERE on UPDATE/DELETE
+    if (/UPDATE\s+\w+\s+SET(?!\s[\s\S]*WHERE)/i.test(code) || /DELETE\s+FROM(?!\s[\s\S]*WHERE)/i.test(code)) {
+      results.push({ type:'error', title:'✗ UPDATE/DELETE without WHERE', body:'This would affect ALL rows in the table! Add a WHERE clause.' }); errors++;
+    } else { passed++; }
+
+    // SQL injection risk
+    if (/'\s*\+\s*|"\s*\+\s*/.test(code)) {
+      results.push({ type:'error', title:'✗ Potential SQL Injection', body:'String concatenation in SQL is dangerous. Use parameterized queries / prepared statements.' }); errors++;
+    } else { passed++; }
+
+    // Uppercase keywords
+    const keywords = ['select','from','where','join','group by','order by','having','insert','update','delete'];
+    const lowerKws = keywords.filter(kw => new RegExp('\\b' + kw + '\\b').test(code));
+    if (lowerKws.length > 0) {
+      results.push({ type:'info', title:'ℹ Lowercase SQL keywords', body:`Convention: use UPPERCASE for SQL keywords (${lowerKws.slice(0,3).join(', ')}...).` });
+    } else { passed++; }
+
+    // N+1 heuristic
+    if ((code.match(/SELECT/gi)||[]).length > 3) {
+      results.push({ type:'info', title:'ℹ Multiple SELECT statements', body:'Check for N+1 query patterns. Consider JOINs or subqueries to reduce round-trips.' });
+    }
+
+    if (!results.length) {
+      results.push({ type:'ok', title:'✓ SQL looks clean', body:'No major issues detected.' }); passed++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  python: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    // Indentation
+    const badIndents = [];
+    lines.forEach((line, i) => {
+      const indent = line.match(/^( *)/)[1].length;
+      if (indent > 0 && indent % 4 !== 0 && line.trim()) {
+        badIndents.push(i + 1);
+      }
+    });
+    if (badIndents.length) {
+      results.push({ type:'warn', title:`⚠ Non-PEP8 indentation on line(s): ${badIndents.slice(0,5).join(', ')}`, body:'PEP8 requires 4 spaces per indentation level.' }); warnings++;
+    } else { passed++; }
+
+    // Missing spaces around operators
+    if (/[a-zA-Z0-9]=[a-zA-Z0-9]/.test(code.replace(/==|!=|<=|>=/g,''))) {
+      results.push({ type:'warn', title:'⚠ Missing spaces around assignment', body:'PEP8: use x = 1, not x=1 (except in keyword arguments).' }); warnings++;
+    } else { passed++; }
+
+    // print without parens (Python 2)
+    if (/^\s*print\s+[^(]/m.test(code)) {
+      results.push({ type:'error', title:'✗ Python 2 print statement', body:'Use print() as a function: print("hello") not print "hello".' }); errors++;
+    } else { passed++; }
+
+    // Long lines
+    const longLines = lines.filter(l => l.length > 79);
+    if (longLines.length) {
+      results.push({ type:'warn', title:`⚠ ${longLines.length} line(s) > 79 chars`, body:'PEP8 recommends max 79 characters per line.' }); warnings++;
+    } else { passed++; }
+
+    // Bare except
+    if (/except\s*:/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Bare except clause', body:'Catching all exceptions hides bugs. Use except Exception as e: or specify exception types.' }); warnings++;
+    } else { passed++; }
+
+    // Unused imports heuristic
+    const imports = [...code.matchAll(/^(?:import|from\s+\S+\s+import)\s+(\S+)/gm)].map(m => m[1].replace(',',''));
+    imports.forEach(imp => {
+      const clean = imp.split(' ')[0];
+      if (clean && (code.split(clean).length - 1) <= 1) {
+        results.push({ type:'info', title:`ℹ Possibly unused import: ${clean}`, body:`"${clean}" is imported but may not be used in the code below.` });
+      }
+    });
+
+    return { results, errors, warnings, passed };
+  },
+
+  javascript: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    // Basic syntax check via Function constructor
+    try {
+      new Function(code);
+      results.push({ type:'ok', title:'✓ Syntax is valid', body:'No syntax errors detected by the JavaScript parser.' }); passed++;
+    } catch(e) {
+      results.push({ type:'error', title:'✗ Syntax Error', body:escHtml(e.message) }); errors++;
+    }
+
+    // var usage
+    if (/\bvar\s/.test(code)) {
+      results.push({ type:'warn', title:'⚠ var declaration found', body:'Prefer const or let over var to avoid hoisting surprises.' }); warnings++;
+    } else { passed++; }
+
+    // == vs ===
+    if (/[^=!<>]==[^=]/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Loose equality (==)', body:'Use strict equality === to avoid type coercion bugs.' }); warnings++;
+    } else { passed++; }
+
+    // console.log
+    const consoleLogs = (code.match(/console\.log/g)||[]).length;
+    if (consoleLogs > 3) {
+      results.push({ type:'info', title:`ℹ ${consoleLogs} console.log calls`, body:'Remove debug logs before production deployment.' });
+    }
+
+    // Missing semicolons heuristic
+    lines.forEach((line, i) => {
+      const t = line.trim();
+      if (t && !t.endsWith(';') && !t.endsWith('{') && !t.endsWith('}') && !t.endsWith(',') && !t.endsWith('(') && !t.startsWith('//') && !t.startsWith('*') && t.length > 5 && /^(const|let|var|return|throw)\s/.test(t)) {
+        results.push({ type:'info', title:`ℹ Possible missing semicolon on line ${i+1}`, body:`<span class="line-ref">Ln ${i+1}</span>${escHtml(t)}` });
+      }
+    });
+
+    // async/await without try/catch
+    if (/async\s+function|async\s*\(/.test(code) && !/try\s*\{/.test(code)) {
+      results.push({ type:'warn', title:'⚠ async function without try/catch', body:'Unhandled promise rejections can crash Node.js apps.' }); warnings++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  typescript: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    // any type
+    const anyCount = (code.match(/:\s*any\b/g)||[]).length;
+    if (anyCount > 0) {
+      results.push({ type:'warn', title:`⚠ ${anyCount} any type(s) found`, body:"Using 'any' defeats TypeScript's type safety. Use specific types or unknown." }); warnings++;
+    } else { passed++; }
+
+    // Non-null assertion
+    const bangCount = (code.match(/![^=]/g)||[]).length;
+    if (bangCount > 2) {
+      results.push({ type:'warn', title:`⚠ ${bangCount} non-null assertions (!)`, body:'Excessive ! operators bypass null safety. Use optional chaining (?.) instead.' }); warnings++;
+    } else { passed++; }
+
+    // Interface vs Type
+    if (/^type\s+[A-Z]/m.test(code) && /^interface\s+/m.test(code)) {
+      results.push({ type:'info', title:'ℹ Mixed interface & type aliases', body:'Pick one style for consistency. Interfaces are preferred for object shapes.' });
+    }
+
+    // as casting
+    const asCount = (code.match(/\bas\s+[A-Z]/g)||[]).length;
+    if (asCount > 3) {
+      results.push({ type:'warn', title:`⚠ ${asCount} type assertions (as)`, body:'Frequent casting suggests missing proper typing. Refactor to use generics or type guards.' }); warnings++;
+    } else { passed++; }
+
+    if (!results.length) {
+      results.push({ type:'ok', title:'✓ TypeScript looks solid', body:'Type annotations and structure look good.' }); passed++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  graphql: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+
+    // Missing colons in field definitions
+    const fieldLines = code.split('\n').filter(l => /^\s+\w+\s+\[?\w/.test(l) && !l.includes(':'));
+    if (fieldLines.length) {
+      results.push({ type:'error', title:`✗ Missing colon in ${fieldLines.length} field definition(s)`, body: escHtml(fieldLines.slice(0,3).map(l=>l.trim()).join('\n')) }); errors++;
+    } else { passed++; }
+
+    // Non-null best practices
+    if (!/!/.test(code)) {
+      results.push({ type:'info', title:'ℹ No non-null fields (!)', body:'Consider marking required fields with ! (e.g., name: String!) for stricter schema.' });
+    } else { passed++; }
+
+    // Resolver field check
+    if (/type\s+Mutation/.test(code) && !/Boolean|ID|String/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Mutation return types', body:'Mutations should return meaningful types (ID, Boolean, or the mutated type).' }); warnings++;
+    }
+
+    // Deprecated
+    if (/@deprecated/.test(code)) {
+      results.push({ type:'info', title:'ℹ @deprecated directives found', body:'Ensure deprecated fields have a migration path documented.' });
+    }
+
+    if (!errors) {
+      results.push({ type:'ok', title:'✓ GraphQL schema structure looks valid', body:'Type definitions and fields appear well-formed.' }); passed++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  bash: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    if (!code.trimStart().startsWith('#!')) {
+      results.push({ type:'warn', title:'⚠ Missing shebang', body:'Add #!/bin/bash or #!/usr/bin/env bash as the first line.' }); warnings++;
+    } else { passed++; }
+
+    // set -e check
+    if (!/(set -e|set -o errexit)/.test(code)) {
+      results.push({ type:'warn', title:'⚠ No set -e', body:"Add 'set -e' to exit immediately on error." }); warnings++;
+    } else { passed++; }
+
+    // Unquoted variables
+    const unquoted = lines.filter(l => /\$[A-Z_a-z][A-Z_a-z0-9]*/.test(l) && !/"[^"]*\$[^"]*"/.test(l) && !/'/.test(l));
+    if (unquoted.length > 2) {
+      results.push({ type:'warn', title:`⚠ Unquoted variables (~${Math.min(unquoted.length,5)} lines)`, body:'Always quote variables: "$VAR" not $VAR to prevent word-splitting.' }); warnings++;
+    } else { passed++; }
+
+    // Deprecated backticks
+    if (/`[^`]+`/.test(code)) {
+      results.push({ type:'warn', title:'⚠ Backtick command substitution', body:'Use $(...) instead of backticks `` for command substitution.' }); warnings++;
+    } else { passed++; }
+
+    // cd without check
+    if (/\bcd\b/.test(code) && !/cd.*&&|cd.*\|\|/.test(code)) {
+      results.push({ type:'info', title:'ℹ cd without error check', body:'Use: cd /path || exit 1 to handle failed directory changes.' });
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  regex: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const pattern = code.trim();
+
+    try {
+      const flags = pattern.match(/\/([gimsuy]*)$/)?.[1] || '';
+      const body = pattern.startsWith('/') ? pattern.slice(1, pattern.lastIndexOf('/')) : pattern;
+      const re = new RegExp(body, flags);
+      results.push({ type:'ok', title:'✓ Valid Regular Expression', body:`Pattern compiles successfully.\nFlags: ${flags||'none'}` }); passed++;
+
+      // Check for catastrophic backtracking patterns
+      if (/(\(.*\+\).*\+|\(.*\*\).*\*)/.test(body)) {
+        results.push({ type:'warn', title:'⚠ Possible catastrophic backtracking', body:'Nested quantifiers like (a+)+ can cause exponential slowdown on non-matching input.' }); warnings++;
+      }
+
+      // Anchors
+      if (!body.startsWith('^') && !body.endsWith('$')) {
+        results.push({ type:'info', title:'ℹ No anchors (^ and $)', body:'Without anchors, the pattern matches anywhere in the string. Add ^ and $ if you want a full match.' });
+      } else { passed++; }
+
+      // Greedy vs lazy
+      if (/\.\*[^?]/.test(body)) {
+        results.push({ type:'info', title:'ℹ Greedy .* detected', body:'Consider .*? (lazy) to match as little as possible, especially between delimiters.' });
+      }
+
+      // Common test cases
+      const tests = { email: /^[\w.+-]+@[\w-]+\.[a-z]{2,}$/i, url: /https?:\/\//i, phone: /\d{10}/, date: /\d{4}-\d{2}-\d{2}/ };
+      for (const [name, t] of Object.entries(tests)) {
+        if (body.includes(t.source.slice(0,8))) {
+          results.push({ type:'info', title:`ℹ Looks like a ${name} regex`, body:`Common ${name} patterns exist — make sure edge cases are covered.` });
+        }
+      }
+
+    } catch(e) {
+      results.push({ type:'error', title:'✗ Invalid Regex', body: escHtml(e.message) }); errors++;
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  csv: (code) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.trim().split('\n');
+
+    if (!lines.length) return { results:[{type:'warn',title:'Empty CSV',body:'No data found.'}], errors:0, warnings:1, passed:0 };
+
+    const header = lines[0].split(',');
+    const colCount = header.length;
+    results.push({ type:'ok', title:`✓ Header: ${colCount} columns`, body: escHtml(header.join(', ')) }); passed++;
+
+    let badRows = [];
+    lines.slice(1).forEach((line, i) => {
+      if (!line.trim()) return;
+      // Handle quoted commas
+      const cols = line.match(/(".*?"|[^,]+|(?<=,)(?=,)|^(?=,)|(?<=,)$)/g) || line.split(',');
+      if (cols.length !== colCount) {
+        badRows.push({ row: i+2, expected: colCount, got: cols.length });
+      }
+    });
+
+    if (badRows.length) {
+      results.push({ type:'error', title:`✗ ${badRows.length} row(s) with wrong column count`, body: badRows.slice(0,5).map(r=>`<span class="line-ref">Row ${r.row}</span>Expected ${r.expected} cols, got ${r.got}`).join('\n') }); errors++;
+    } else { results.push({ type:'ok', title:'✓ All rows match column count', body:`${lines.length-1} data rows all have ${colCount} columns.` }); passed++; }
+
+    // Empty cells
+    let emptyCells = 0;
+    lines.slice(1).forEach(line => { (line.split(',') || []).forEach(cell => { if (!cell.trim()) emptyCells++; }); });
+    if (emptyCells > 0) {
+      results.push({ type:'warn', title:`⚠ ${emptyCells} empty cell(s)`, body:'Empty cells may cause parsing issues. Use NULL or N/A for missing values.' }); warnings++;
+    } else { passed++; }
+
+    // Email validation in email columns
+    const emailIdx = header.findIndex(h => /email/i.test(h));
+    if (emailIdx >= 0) {
+      const badEmails = lines.slice(1).filter(l => {
+        const cells = l.split(',');
+        return cells[emailIdx] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cells[emailIdx].trim());
+      });
+      if (badEmails.length) {
+        results.push({ type:'warn', title:`⚠ ${badEmails.length} invalid email(s) in "${header[emailIdx].trim()}" column`, body: badEmails.slice(0,3).map(l=>escHtml(l.split(',')[emailIdx])).join('\n') }); warnings++;
+      } else { passed++; }
+    }
+
+    return { results, errors, warnings, passed };
+  },
+
+  // Generic validators for remaining languages
+  generic: (code, lang) => {
+    const results = [];
+    let errors = 0, warnings = 0, passed = 0;
+    const lines = code.split('\n');
+
+    const langChecks = {
+      toml: () => {
+        const sections = (code.match(/^\[/gm)||[]).length;
+        results.push({ type:'ok', title:`✓ TOML structure: ${sections} section(s)`, body:'TOML detected. Basic structure check passed.' }); passed++;
+        if (/"\s*=\s*"/.test(code)) { passed++; } // string values
+        const dupeSections = [...code.matchAll(/^\[([^\]]+)\]/gm)].map(m=>m[1]);
+        const dupes = dupeSections.filter((k,i)=>dupeSections.indexOf(k)!==i);
+        if (dupes.length) { results.push({ type:'error', title:`✗ Duplicate sections: ${dupes.join(', ')}`, body:'TOML does not allow duplicate section headers.' }); errors++; }
+        else { passed++; }
+      },
+      markdown: () => {
+        const headers = lines.filter(l => /^#+\s/.test(l));
+        results.push({ type:'ok', title:`✓ ${headers.length} heading(s) found`, body: headers.slice(0,3).map(h=>escHtml(h)).join('\n') || 'No headings' }); passed++;
+        
+        const mixedLists = lines.filter(l => /^[\s]*[-*+]\s/.test(l));
+        const markers = [...new Set(mixedLists.map(l => l.trim()[0]))];
+        if (markers.length > 1) {
+          results.push({ type:'warn', title:'⚠ Mixed list markers (-, *, +)', body:'Use a single consistent marker for unordered lists.' }); warnings++;
+        } else { passed++; }
+
+        // Broken links
+        const brokenLinks = [...code.matchAll(/\[([^\]]+)\]\((\s*)\)/g)];
+        if (brokenLinks.length) {
+          results.push({ type:'error', title:`✗ ${brokenLinks.length} empty link(s)`, body: brokenLinks.map(m=>`"${m[1]}" has empty href`).join('\n') }); errors++;
+        } else { passed++; }
+
+        const codeBlocks = (code.match(/```/g)||[]).length;
+        if (codeBlocks % 2 !== 0) {
+          results.push({ type:'error', title:'✗ Unclosed code block', body:'You have an odd number of ``` markers. One code block is not closed.' }); errors++;
+        } else { passed++; }
+      },
+      dockerfile: () => {
+        if (!/^FROM\s/m.test(code)) { results.push({ type:'error', title:'✗ Missing FROM instruction', body:'Dockerfile must begin with a FROM instruction.' }); errors++; }
+        else { results.push({ type:'ok', title:'✓ FROM instruction present', body:'Base image is defined.' }); passed++; }
+        
+        if ((code.match(/^RUN\s/gm)||[]).length > 5) {
+          results.push({ type:'warn', title:'⚠ Many RUN instructions', body:'Combine RUN commands with && to reduce image layers.' }); warnings++;
+        } else { passed++; }
+
+        if (!/^USER\s/m.test(code)) {
+          results.push({ type:'warn', title:'⚠ No USER instruction', body:'Running as root is a security risk. Add USER <username>.' }); warnings++;
+        } else { passed++; }
+
+        if (!/^EXPOSE\s/m.test(code)) {
+          results.push({ type:'info', title:'ℹ No EXPOSE instruction', body:'EXPOSE documents which port your app listens on.' });
+        } else { passed++; }
+
+        if (!/:/.test(code.match(/^FROM\s+(.+)/m)?.[1]||'')) {
+          results.push({ type:'warn', title:'⚠ No image tag in FROM', body:'Pin your base image version (e.g. node:18-alpine) instead of using latest.' }); warnings++;
+        } else { passed++; }
+      },
+      default: () => {
+        results.push({ type:'info', title:`ℹ ${lang.toUpperCase()} — Basic Analysis`, body:`${lines.length} lines · ${code.length} characters` });
+
+        const longLines = lines.filter(l => l.length > 120);
+        if (longLines.length) {
+          results.push({ type:'info', title:`ℹ ${longLines.length} long line(s) (>120 chars)`, body:'Long lines reduce readability. Consider breaking them up.' });
+        } else { passed++; }
+
+        // Trailing whitespace
+        const trailingWS = lines.filter(l => /\s+$/.test(l)).length;
+        if (trailingWS > 0) {
+          results.push({ type:'info', title:`ℹ ${trailingWS} line(s) with trailing whitespace`, body:'Configure your editor to trim trailing whitespace on save.' });
+        } else { passed++; }
+
+        results.push({ type:'ok', title:'✓ File structure check complete', body:`No critical issues detected at syntax level. Use a dedicated ${lang.toUpperCase()} linter for deeper analysis.` });
+        passed++;
+      }
+    };
+
+    (langChecks[lang] || langChecks.default)();
+    return { results, errors, warnings, passed };
+  }
+};
+
+// ── Main Validator ─────────────────────────────────────────────────────────
+function runValidation() {
+  const code = document.getElementById('code-input').value.trim();
+  if (!code) {
+    showResult([{ type:'warn', title:'⚠ Empty Editor', body:'Nothing to validate. Paste some code first.' }], 0, 1, 0);
+    return;
+  }
+
+  // Show loading
+  const rb = document.getElementById('results-body');
+  rb.innerHTML = `<div class="result-idle"><span class="spinner"></span><p style="margin-top:8px;font-size:12px">Analyzing <strong>${currentLang.toUpperCase()}</strong>...</p></div>`;
+  document.getElementById('status-badge').className = 'results-badge badge-waiting';
+  document.getElementById('status-badge').textContent = '...';
+
+  setTimeout(() => {
+    let res;
+    const V = validators;
+    if (V[currentLang]) {
+      res = V[currentLang](code);
+    } else {
+      res = V.generic(code, currentLang);
+    }
+    showResult(res.results, res.errors, res.warnings, res.passed);
+  }, 250);
+}
+
+function showResult(results, errors, warnings, passed) {
+  const rb = document.getElementById('results-body');
+  rb.innerHTML = '';
+
+  results.forEach(r => {
+    const div = document.createElement('div');
+    div.className = `result-item ${r.type}`;
+    div.innerHTML = `
+      <div class="result-item-header">${r.title}</div>
+      <div class="result-item-body">${r.body}</div>
+    `;
+    rb.appendChild(div);
+  });
+
+  // Status badge
+  const badge = document.getElementById('status-badge');
+  if (errors > 0) {
+    badge.className = 'results-badge badge-error';
+    badge.textContent = `${errors} ERROR${errors>1?'S':''}`;
+  } else if (warnings > 0) {
+    badge.className = 'results-badge badge-warning';
+    badge.textContent = `${warnings} WARN${warnings>1?'INGS':'ING'}`;
+  } else {
+    badge.className = 'results-badge badge-ok';
+    badge.textContent = 'VALID ✓';
+  }
+
+  // Summary
+  document.getElementById('sum-errors').textContent = errors;
+  document.getElementById('sum-warnings').textContent = warnings;
+  document.getElementById('sum-checks').textContent = passed;
+  document.getElementById('summary-bar').style.display = 'grid';
+}
+
+// ── Beautifier ─────────────────────────────────────────────────────────────
+function beautifyCode() {
+  const ta = document.getElementById('code-input');
+  const code = ta.value;
+  if (!code.trim()) return;
+
+  let result = code;
+
+  try {
+    switch(currentLang) {
+      case 'json':
+        result = JSON.stringify(JSON.parse(code), null, 2);
+        break;
+      case 'xml':
+      case 'html':
+        result = formatXML(code);
+        break;
+      case 'css':
+        result = formatCSS(code);
+        break;
+      case 'sql':
+        result = formatSQL(code);
+        break;
+      default:
+        result = formatGeneric(code);
+    }
+    ta.value = result;
+    updateLineNumbers();
+    showToast('✦ Code formatted!');
+  } catch(e) {
+    showToast('⚠ Cannot beautify — fix errors first', true);
+  }
+}
+
+function formatXML(xml) {
+  let formatted = '';
+  let indent = 0;
+  xml.replace(/>\s*</g,'>\n<').split('\n').forEach(node => {
+    node = node.trim();
+    if (!node) return;
+    if (/^<\//.test(node)) indent = Math.max(0, indent - 1);
+    formatted += '  '.repeat(indent) + node + '\n';
+    if (!/^<\/|\/>\s*$|<!/.test(node) && /^<[^!]/.test(node)) indent++;
+  });
+  return formatted.trim();
+}
+
+function formatCSS(css) {
+  return css
+    .replace(/\s*\{\s*/g, ' {\n  ')
+    .replace(/;\s*/g, ';\n  ')
+    .replace(/\s*\}\s*/g, '\n}\n\n')
+    .replace(/  \n\}/g, '\n}')
+    .trim();
+}
+
+function formatSQL(sql) {
+  const kws = ['SELECT','FROM','WHERE','AND','OR','JOIN','LEFT JOIN','RIGHT JOIN','INNER JOIN','GROUP BY','ORDER BY','HAVING','LIMIT','INSERT INTO','UPDATE','SET','DELETE FROM','ON','AS'];
+  let result = sql;
+  kws.forEach(kw => {
+    result = result.replace(new RegExp('\\b' + kw + '\\b', 'gi'), '\n' + kw);
+  });
+  return result.trim().split('\n').map(l => l.trim()).filter(Boolean).join('\n');
+}
+
+function formatGeneric(code) {
+  // Normalize mixed indentation
+  return code.split('\n').map(line => {
+    const tabs = line.match(/^\t+/);
+    if (tabs) return '  '.repeat(tabs[0].length) + line.trimStart();
+    return line;
+  }).join('\n');
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+function showToast(msg, isWarn = false) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = `position:fixed;bottom:24px;right:24px;padding:10px 18px;border-radius:8px;font-family:var(--font-mono);font-size:12px;z-index:9999;transition:opacity 0.3s;`;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.background = isWarn ? 'rgba(255,204,0,0.15)' : 'rgba(57,255,126,0.15)';
+  t.style.color = isWarn ? 'var(--yellow)' : 'var(--green)';
+  t.style.border = `1px solid ${isWarn ? 'rgba(255,204,0,0.3)' : 'rgba(57,255,126,0.3)'}`;
+  t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+
+// ── Utils ──────────────────────────────────────────────────────────────────
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// Init
+updateLineNumbers();
+</script>
+</body>
+</html>
